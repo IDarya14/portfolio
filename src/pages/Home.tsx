@@ -182,49 +182,49 @@ export function Home() {
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      <header className="fixed inset-x-0 top-0 z-30 flex justify-center px-3 py-3 sm:justify-end sm:px-6 md:px-10 md:py-4">
-        <div className="max-w-full rounded-3xl bg-black/40 px-2 py-1.5 backdrop-blur-md sm:rounded-full sm:px-4 sm:py-2 md:px-5">
-          <SiteNav />
+      <header className="fixed inset-x-0 top-0 z-30 px-4 py-3 md:px-8 md:py-4">
+        <div className="mx-auto flex w-full max-w-6xl justify-end">
+          <div className="max-w-full rounded-3xl bg-black/40 px-2 py-1.5 backdrop-blur-md sm:rounded-full sm:px-4 sm:py-2 md:px-5">
+            <SiteNav />
+          </div>
         </div>
       </header>
 
       <main id="top" className="relative z-10">
-        <section className="flex flex-col pt-32 text-white sm:min-h-svh sm:pt-24">
-          <div className="flex px-4 pb-6 sm:flex-1 sm:items-center sm:px-8 sm:pt-10 md:px-16 md:pb-10">
-            <div className="relative w-full max-w-5xl">
-              <img
-                src={portrait}
-                alt="Daria Kurylenko"
-                className="absolute top-0 left-1/2 z-10 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full object-cover object-[center_16%] shadow-[0_16px_40px_rgba(0,0,0,0.4)] ring-2 ring-cyan-100/40 sm:top-1/2 sm:left-0 sm:size-36 sm:-translate-x-[14%] sm:-translate-y-1/2 md:size-56 md:-translate-x-[22%]"
-              />
-              <div className="rounded-[2rem] border border-cyan-100/25 bg-[#062433]/45 px-5 pt-16 pb-8 text-center shadow-[inset_0_1px_0_rgba(186,230,240,0.28),0_24px_70px_rgba(0,16,28,0.35)] backdrop-blur-xl sm:rounded-[2.75rem] sm:py-10 sm:pr-8 sm:pl-36 sm:text-left md:py-12 md:pr-12 md:pl-52">
-                <p className="text-xl font-medium sm:text-2xl md:text-3xl">Hi, I am</p>
-                <h1 className="mt-2 text-4xl leading-[0.95] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
-                  Daria Kurylenko
-                </h1>
-                <p className="mt-4 text-sm text-white/75 sm:text-base md:text-lg">
-                  Frontend Developer · React / TypeScript · Strong Mid-Level
-                </p>
-                <div className="mt-6 flex justify-center gap-3 sm:mt-8 sm:justify-start">
-                  <a
-                    href={profile.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="LinkedIn"
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-white/10 text-white transition-colors hover:bg-white/20"
-                  >
-                    <LinkedInIcon />
-                  </a>
-                  <a
-                    href={profile.telegram}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Telegram"
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-white/10 text-white transition-colors hover:bg-white/20"
-                  >
-                    <TelegramIcon />
-                  </a>
-                </div>
+        <section className="px-4 pt-28 pb-4 text-white md:px-8 md:pt-[5.5rem] md:pb-5">
+          <div className="relative mx-auto w-full max-w-6xl">
+            <img
+              src={portrait}
+              alt="Daria Kurylenko"
+              className="absolute top-0 left-1/2 z-10 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full object-cover object-[center_16%] shadow-[0_16px_40px_rgba(0,0,0,0.4)] ring-2 ring-cyan-100/40 md:top-1/2 md:left-0 md:size-56 md:-translate-x-[18%] md:-translate-y-1/2"
+            />
+            <div className="glass-panel px-5 pt-16 pb-8 text-center sm:px-8 sm:pb-12 sm:pt-16 md:py-16 md:pr-12 md:pl-52 md:text-left lg:pl-56 lg:pr-12">
+              <p className="text-xl font-medium sm:text-2xl md:text-3xl">Hi, I am</p>
+              <h1 className="mt-2 text-4xl leading-[0.95] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+                Daria Kurylenko
+              </h1>
+              <p className="mt-4 text-sm text-white/75 sm:text-base md:text-lg">
+                Frontend Developer · React / TypeScript · Strong Mid-Level
+              </p>
+              <div className="mt-6 flex justify-center gap-3 md:mt-8 md:justify-start">
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-white/10 text-white transition-colors hover:bg-white/20"
+                >
+                  <LinkedInIcon />
+                </a>
+                <a
+                  href={profile.telegram}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Telegram"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-white/10 text-white transition-colors hover:bg-white/20"
+                >
+                  <TelegramIcon />
+                </a>
               </div>
             </div>
           </div>
