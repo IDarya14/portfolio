@@ -21,14 +21,14 @@ export const profile = {
     'Pusher',
   ],
   about: [
-    'I’m a Full-Stack Developer. On the frontend I have 5+ years as a Lead and Strong Middle in React / TypeScript. On the backend I am a Junior in Node.js and Next.js.',
-    'At my current FinTech company, I own the frontend of a multi-tenant B2B platform for consumer financing, turning a complex financing process into a single product for merchants — from application and lender offers to funding, billing, and reporting. I’ve led frontend architecture, built 15+ lender-specific flows, implemented granular RBAC and real-time features, and worked closely with the team on technical decisions and code quality. I also integrated AI into my development workflow, reducing UI implementation time by about 40% and speeding up code analysis, problem-solving, and refactoring.',
-    'On another B2B SaaS product, I helped digitize a complex school procurement process, covering the workflow from tender creation and supplier evaluation to pitching and awarding.',
-    'On the backend I am a junior. I am ready to grow into full-stack under mentorship, taking on Node.js and Next.js next to the frontend I already own.',
-    'I enjoy turning complex business rules into simple, predictable products that can scale.',
+    'I’m a full-stack developer. Frontend is my stronger side: 5+ years in React and TypeScript, as a lead at a strong-middle level. On the backend I am a junior in Node.js and Next.js.',
+    'At my current fintech company I own the frontend of a multi-tenant B2B platform for consumer financing. Merchants move through one product, from the application and lender offers to funding, billing, and reporting. I set the frontend architecture, shipped 15+ lender-specific flows, added role-based access and real-time updates, and mentored junior developers. I also use AI in daily development. That cut UI implementation time by about 40% and sped up analysis, debugging, and refactoring.',
+    'Alongside that, I worked on a B2B SaaS product for school procurement and carried the flow from tender creation and supplier evaluation through pitches and the award.',
+    'I want to keep owning the frontend and grow the backend under a mentor.',
+    'I like turning complex business rules into products that stay simple and predictable as they scale.',
   ],
   lookingFor:
-    'Open to full-stack roles: Strong Middle React / TypeScript on the frontend, Junior Node.js and Next.js on the backend.',
+    'Open to full-stack roles: strong-middle React and TypeScript on the frontend, and a junior path in Node.js and Next.js on the backend.',
   education: {
     school:
       'Hryhorii Skovoroda Pereiaslav-Khmelnytskyi State Pedagogical University',
@@ -56,10 +56,10 @@ export const experience: Experience[] = [
     dates: 'Aug 2023 — Present',
     place: 'United States · Remote',
     summary:
-      'USA FinTech. B2B SaaS for POS consumer financing: applications, lender offers, funding, billing, and reporting.',
+      'US fintech. B2B SaaS for point-of-sale consumer financing, from applications and lender offers to funding, billing, and reporting.',
     points: [
-      'Owned the frontend of a multi-tenant financing platform in React 18 and TypeScript, setting architecture, RBAC, and engineering standards so loan, funding, and billing flows shipped on one codebase.',
-      'Built the SPA from scratch, including architecture, the data layer, reusable components, and development standards across the lifecycle from application through funding and reporting.',
+      'Owned the React and TypeScript frontend of a multi-tenant financing platform: architecture, role-based access, and the standards that let loan, funding, and billing ship from one codebase.',
+      'Built the SPA from an empty repository, including the data layer, reusable components, and the path from application through funding and reporting.',
       'Designed the data layer with Redux Toolkit and RTK Query across 20+ API slices, with a shared base query for auth, CSRF, errors, and cache invalidation.',
       'Implemented granular RBAC with module action permissions, route guards, and conditional UI for Super Admin, Admin, Main Account, and Partner roles.',
       'Shipped a real-time dashboard with Pusher, drag-and-drop widgets, charts, and live updates for application, offer, and funding status.',
@@ -80,7 +80,7 @@ export const experience: Experience[] = [
     summary:
       'Germany-based B2B SaaS for school procurement and supplier matchmaking in South Africa, from onboarding to award and contract closure.',
     points: [
-      'Built a React 18 and TypeScript SPA for B2B school procurement, focusing on role-based UI, tender workflows, and real-time collaboration so schools and suppliers could complete a tender in one product.',
+      'Built a React and TypeScript SPA for school procurement, with role-based screens, tender workflows, and live updates, so a school and a supplier could finish a tender in one product.',
       'Implemented role-based UI for Super Admins, Tender Representatives, School Users, Onboarding Representatives, and Suppliers.',
       'Developed a 10+ phase tender workflow with tasks, approvals, deadlines, phase transitions, cancellation, restart, and multi-award scenarios.',
       'Built drag-and-drop form and scorecard builders with dynamic fields, linked fields, validation, preview, and draft/publish flows.',
@@ -101,15 +101,15 @@ export const experience: Experience[] = [
     dates: 'Jul 2021 — Aug 2023',
     place: 'Ukraine · Remote',
     summary:
-      'Software development company in Kyiv delivering web products for clients across industries, with fast-changing requirements, architectures, and technology stacks.',
+      'Kyiv software company delivering web products for clients across industries, with requirements, architecture, and stacks that changed from project to project.',
     points: [
       'Developed and maintained React, TypeScript, and JavaScript web applications, building reusable UI components and responsive interfaces from Figma.',
       'Integrated REST APIs and implemented client-side authentication, authorization, role-based access, and protected routes.',
       'Built forms with complex validation and dynamic fields, plus tables, filters, pagination, sorting, modals, multi-step flows, and dashboards.',
       'Implemented data visualization with Chart.js, real-time updates with WebSockets, and styling with SCSS, Tailwind CSS, and Styled Components.',
-      'Adapted to new requirements, frontend architectures, and UI libraries including Ant Design and Material UI.',
+      'Picked up new UI libraries, including Ant Design and Material UI, as project requirements changed.',
       'Worked with Redux, Redux Toolkit, RTK Query, React Router, React Hook Form, Formik, and Yup.',
-      'Joined code reviews, debugging, refactoring, and performance work in Agile.',
+      'Took part in code reviews, debugging, refactoring, and performance work in Agile.',
       'Collaborated with designers, backend, QA, and product managers to turn changing requirements into production-ready features.',
     ],
     stack:
@@ -190,12 +190,12 @@ export const skillGroups: { title: string; items: string[] }[] = [
     items: [
       'Technical Leadership',
       'Mentoring',
-      'Complexity translation',
-      'Tradeoff clarity',
-      'Product judgment',
-      'Scope discipline',
+      'Explaining complexity',
+      'Clear tradeoffs',
+      'Product sense',
+      'Scope control',
       'Systems thinking',
-      'Review as teaching',
+      'Mentoring in review',
       'Agile',
       'Cross-functional Collaboration',
       'Communication',
