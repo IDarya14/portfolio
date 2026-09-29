@@ -1,8 +1,8 @@
 export const profile = {
   name: 'Daria Kurylenko',
-  role: 'Frontend Lead',
+  role: 'Full-Stack Developer',
   headline:
-    'Frontend Developer / Lead with 5+ years building complex B2B SaaS and fintech products in React, TypeScript, and Redux.',
+    'Full-Stack Developer. Frontend: 5+ years, Lead, Strong Middle, React / TypeScript. Backend: Junior, Node.js, Next.js.',
   location: 'Ukraine, Kyiv',
   email: 'idarya1401@gmail.com',
   phone: '+380 93 339 70 00',
@@ -21,13 +21,14 @@ export const profile = {
     'Pusher',
   ],
   about: [
-    'I’m a Frontend Lead / Senior Frontend Engineer with 5+ years of experience building React and TypeScript products.',
+    'I’m a Full-Stack Developer. On the frontend I have 5+ years as a Lead and Strong Middle in React / TypeScript. On the backend I am a Junior in Node.js and Next.js.',
     'At my current FinTech company, I own the frontend of a multi-tenant B2B platform for consumer financing, turning a complex financing process into a single product for merchants — from application and lender offers to funding, billing, and reporting. I’ve led frontend architecture, built 15+ lender-specific flows, implemented granular RBAC and real-time features, and worked closely with the team on technical decisions and code quality. I also integrated AI into my development workflow, reducing UI implementation time by about 40% and speeding up code analysis, problem-solving, and refactoring.',
     'On another B2B SaaS product, I helped digitize a complex school procurement process, covering the workflow from tender creation and supplier evaluation to pitching and awarding.',
+    'On the backend I am a junior. I am ready to grow into full-stack under mentorship, taking on Node.js and Next.js next to the frontend I already own.',
     'I enjoy turning complex business rules into simple, predictable products that can scale.',
   ],
   lookingFor:
-    'Open to Frontend Lead / Senior Frontend Engineer opportunities.',
+    'Open to full-stack roles: Strong Middle React / TypeScript on the frontend, Junior Node.js and Next.js on the backend.',
   education: {
     school:
       'Hryhorii Skovoroda Pereiaslav-Khmelnytskyi State Pedagogical University',

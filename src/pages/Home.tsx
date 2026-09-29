@@ -199,13 +199,17 @@ export function Home() {
               className="absolute top-0 left-1/2 z-10 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full object-cover object-[center_16%] shadow-[0_16px_40px_rgba(0,0,0,0.4)] ring-2 ring-cyan-100/40 md:top-1/2 md:left-0 md:size-56 md:-translate-x-[18%] md:-translate-y-1/2"
             />
             <div className="glass-panel px-5 pt-16 pb-8 text-center sm:px-8 sm:pb-12 sm:pt-16 md:py-16 md:pr-12 md:pl-52 md:text-left lg:pl-56 lg:pr-12">
-              <p className="text-xl font-medium sm:text-2xl md:text-3xl">Hi, I am</p>
+              <p className="text-xl font-medium sm:text-2xl md:text-3xl">Hey 👋, I am</p>
               <h1 className="mt-2 text-4xl leading-[0.95] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
                 Daria Kurylenko
               </h1>
-              <p className="mt-4 text-sm text-white/75 sm:text-base md:text-lg">
-                Frontend Developer · React / TypeScript · Strong Mid-Level
+              <p className="mt-4 text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
+                Full-Stack Developer
               </p>
+              <div className="mt-3 space-y-1 text-sm text-white/75 sm:text-base">
+                <p>Frontend: 5+ years, Lead, Strong Middle, React / TypeScript</p>
+                <p>Backend: Junior, Node.js, Next.js</p>
+              </div>
               <div className="mt-6 flex justify-center gap-3 md:mt-8 md:justify-start">
                 <a
                   href={profile.linkedin}
