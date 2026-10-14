@@ -1,146 +1,115 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import headerImage from "../assets/header.jpg";
-import portrait from "../assets/portrait.jpg";
-import { About } from "../components/About.tsx";
-import { Contact } from "../components/Contact.tsx";
-import { Skills } from "../components/Skills.tsx";
-import { Work } from "../components/Work.tsx";
-import { profile } from "../data/profile.ts";
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import portrait from '../assets/portrait.jpg'
+import { About } from '../components/About.tsx'
+import { Contact } from '../components/Contact.tsx'
+import { Skills } from '../components/Skills.tsx'
+import { Work } from '../components/Work.tsx'
+import { highlights, profile } from '../data/profile.ts'
 
 const nav = [
-  { href: "#about", label: "About me" },
-  { href: "#work", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact me" },
-];
+  { href: '#about', label: 'About' },
+  { href: '#work', label: 'Work' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#contact', label: 'Contact' },
+]
 
-function LinkedInIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
-      <path
-        fill="currentColor"
-        d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.1c.5-1 1.8-2.1 3.8-2.1 4 0 4.8 2.7 4.8 6.1V24h-4v-7.7c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4V24h-4V8.5z"
-      />
-    </svg>
-  );
-}
-
-function TelegramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
-      <path
-        fill="currentColor"
-        d="M20.8 4.6 3.6 11.2c-1.2.5-1.2 1.1-.2 1.4l4.4 1.4 1.7 5.2c.2.6.1.9.7.9.4 0 .6-.2.9-.4l2.4-2.3 4.9 3.6c.6.3 1 .2 1.2-.5l3.2-15.3c.2-1.2-.5-1.7-1.2-1.4ZM9 13.6l9.2-5.8c.4-.3.8-.1.5.2L10.8 15l-.3 3.2-1.5-4.6Z"
-      />
-    </svg>
-  );
-}
-
-const sectionIds = ["about", "work", "skills", "contact"];
+const sectionIds = ['about', 'work', 'skills', 'contact']
 
 function useActiveSection() {
-  const [active, setActive] = useState("#about");
+  const [active, setActive] = useState<string | null>(null)
 
   useEffect(() => {
     const update = () => {
-      let current = "#about";
-      let visibleHeight = 0;
+      const marker = 120
+      let current: string | null = null
       for (const id of sectionIds) {
-        const section = document.getElementById(id);
-        if (!section) continue;
-        const rect = section.getBoundingClientRect();
-        const visible =
-          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 88);
-        if (visible > visibleHeight) {
-          visibleHeight = visible;
-          current = `#${id}`;
-        }
+        const section = document.getElementById(id)
+        if (!section) continue
+        if (section.getBoundingClientRect().top <= marker) current = `#${id}`
       }
       const atEnd =
         window.scrollY + window.innerHeight >=
-        document.documentElement.scrollHeight - 4;
-      setActive(atEnd ? "#contact" : visibleHeight > 48 ? current : "#about");
-    };
+        document.documentElement.scrollHeight - 4
+      setActive(atEnd ? '#contact' : current)
+    }
 
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("hashchange", update);
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('hashchange', update)
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("hashchange", update);
-    };
-  }, []);
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('hashchange', update)
+    }
+  }, [])
 
-  return active;
+  return active
 }
 
 function SiteNav() {
-  const scrolled = useActiveSection();
-  const [pressed, setPressed] = useState<string | null>(null);
-  const active = pressed ?? scrolled;
-  const navRef = useRef<HTMLElement>(null);
-  const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
-  const [pillReady, setPillReady] = useState(false);
-  const placed = useRef(false);
+  const scrolled = useActiveSection()
+  const [pressed, setPressed] = useState<string | null>(null)
+  const active = pressed ?? scrolled
+  const navRef = useRef<HTMLElement>(null)
+  const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 })
+  const placed = useRef(false)
 
   useEffect(() => {
-    if (!pressed) return;
-    const unlock = () => setPressed(null);
-    window.addEventListener("scrollend", unlock);
-    const timer = window.setTimeout(unlock, 1200);
+    if (!pressed) return
+    const unlock = () => setPressed(null)
+    window.addEventListener('scrollend', unlock)
+    const timer = window.setTimeout(unlock, 900)
     return () => {
-      window.removeEventListener("scrollend", unlock);
-      window.clearTimeout(timer);
-    };
-  }, [pressed]);
+      window.removeEventListener('scrollend', unlock)
+      window.clearTimeout(timer)
+    }
+  }, [pressed])
 
   useLayoutEffect(() => {
-    const navEl = navRef.current;
-    if (!navEl) return;
+    const navEl = navRef.current
+    if (!navEl) return
 
     const measure = () => {
       const current = navEl.querySelector<HTMLAnchorElement>(
         '[aria-current="true"]',
-      );
-      if (!current) return;
-      const navBox = navEl.getBoundingClientRect();
-      const box = current.getBoundingClientRect();
+      )
+      if (!current) {
+        setPill((value) => ({ ...value, width: 0 }))
+        return
+      }
+      const navBox = navEl.getBoundingClientRect()
+      const box = current.getBoundingClientRect()
       setPill({
         left: box.left - navBox.left,
         top: box.top - navBox.top,
         width: box.width,
         height: box.height,
-      });
-      setPillReady(true);
-    };
-
-    const frame = placed.current ? window.requestAnimationFrame(measure) : 0;
-    if (!placed.current) {
-      placed.current = true;
-      measure();
+      })
     }
-    const observer = new ResizeObserver(measure);
-    observer.observe(navEl);
-    window.addEventListener("resize", measure);
+
+    const frame = placed.current ? window.requestAnimationFrame(measure) : 0
+    if (!placed.current) {
+      placed.current = true
+      measure()
+    }
+    const observer = new ResizeObserver(measure)
+    observer.observe(navEl)
+    window.addEventListener('resize', measure)
     return () => {
-      window.cancelAnimationFrame(frame);
-      observer.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, [active]);
+      window.cancelAnimationFrame(frame)
+      observer.disconnect()
+      window.removeEventListener('resize', measure)
+    }
+  }, [active])
 
   return (
     <nav
       ref={navRef}
-      className="relative flex flex-wrap items-center justify-center gap-1 sm:justify-end sm:gap-x-2"
+      className="relative flex items-center gap-0.5 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      aria-label="Page"
     >
       <span
         aria-hidden="true"
-        className={
-          pillReady
-            ? "pointer-events-none absolute rounded-full bg-white transition-[left,top,width,height] duration-500 ease-out motion-reduce:transition-none"
-            : "pointer-events-none absolute rounded-full bg-white"
-        }
+        className="pointer-events-none absolute rounded-full bg-ink transition-[left,top,width,height] duration-500 ease-out motion-reduce:transition-none"
         style={{
           left: pill.left,
           top: pill.top,
@@ -149,89 +118,109 @@ function SiteNav() {
         }}
       />
       {nav.map((item) => {
-        const selected = active === item.href;
+        const selected = active === item.href
         return (
           <a
             key={item.href}
             href={item.href}
-            aria-current={selected ? "true" : undefined}
+            aria-current={selected ? 'true' : undefined}
             onClick={() => setPressed(item.href)}
             className={
               selected
-                ? "relative z-10 rounded-full px-2.5 py-1.5 text-[10px] font-semibold tracking-wide text-ink uppercase transition-colors duration-500 ease-out sm:px-4 sm:py-2 sm:text-xs"
-                : "relative z-10 rounded-full px-2.5 py-1.5 text-[10px] font-semibold tracking-wide text-white/55 uppercase transition-colors duration-500 ease-out hover:text-white sm:px-4 sm:py-2 sm:text-xs"
+                ? 'relative z-10 shrink-0 rounded-full px-2.5 py-1.5 text-[13px] font-medium text-white transition-colors duration-500 sm:px-3'
+                : 'relative z-10 shrink-0 rounded-full px-2.5 py-1.5 text-[13px] font-medium text-ink/55 transition-colors duration-500 hover:text-ink sm:px-3'
             }
           >
             {item.label}
           </a>
-        );
+        )
       })}
     </nav>
-  );
+  )
 }
 
 export function Home() {
   return (
     <>
-      <div className="pointer-events-none fixed inset-0 z-0">
-        <img
-          src={headerImage}
-          alt=""
-          className="h-full w-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/30" />
-      </div>
-
-      <header className="fixed inset-x-0 top-0 z-30 px-4 py-3 md:px-8 md:py-4">
-        <div className="mx-auto flex w-full max-w-6xl justify-end">
-          <div className="max-w-full rounded-3xl bg-black/40 px-2 py-1.5 backdrop-blur-md sm:rounded-full sm:px-4 sm:py-2 md:px-5">
-            <SiteNav />
-          </div>
+      <header className="fixed inset-x-0 top-0 z-30 border-b border-line/80 bg-canvas/80 backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-2 px-5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 md:px-8">
+          <a href="#top" className="shrink-0 text-sm font-semibold tracking-tight">
+            Daria Kurylenko
+          </a>
+          <SiteNav />
         </div>
       </header>
 
-      <main id="top" className="relative z-10">
-        <section className="px-4 pt-28 pb-4 text-white md:px-8 md:pt-[5.5rem] md:pb-5">
-          <div className="relative mx-auto w-full max-w-6xl">
-            <img
-              src={portrait}
-              alt="Daria Kurylenko"
-              className="absolute top-0 left-1/2 z-10 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full object-cover object-[center_16%] shadow-[0_16px_40px_rgba(0,0,0,0.4)] ring-2 ring-cyan-100/40 md:top-1/2 md:left-0 md:size-56 md:-translate-x-[18%] md:-translate-y-1/2"
-            />
-            <div className="glass-panel px-5 pt-16 pb-8 text-center sm:px-8 sm:pb-12 sm:pt-16 md:py-16 md:pr-12 md:pl-52 md:text-left lg:pl-56 lg:pr-12">
-              <p className="text-xl font-medium sm:text-2xl md:text-3xl">Hey 👋, I am</p>
-              <h1 className="mt-2 text-4xl leading-[0.95] font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
-                Daria Kurylenko
-              </h1>
-              <p className="mt-4 text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
-                Full-Stack Developer
+      <main id="top">
+        <section className="relative overflow-hidden px-5 pt-28 pb-8 md:px-8 md:pt-36 md:pb-12">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-24 right-0 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,rgba(223,245,106,0.55),transparent_68%)]"
+          />
+          <div className="relative mx-auto grid w-full max-w-6xl items-end gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:gap-16">
+            <div>
+              <p className="inline-flex items-center gap-2 text-sm text-muted">
+                <span className="size-1.5 rounded-full bg-[#6f9f16]" />
+                {profile.location} · {profile.availability}
               </p>
-              <div className="mt-3 space-y-1 text-sm text-white/75 sm:text-base">
-                <p>Frontend: 5+ years, Lead, Strong Middle, React / TypeScript</p>
-                <p>Backend: Junior, Node.js, Next.js</p>
-              </div>
-              <div className="mt-6 flex justify-center gap-3 md:mt-8 md:justify-start">
+              <h1 className="mt-6 max-w-3xl text-[clamp(2.7rem,6.4vw,5.4rem)] leading-[0.92] font-semibold tracking-[-0.045em] text-balance">
+                Clear interfaces for complicated products.
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+                {profile.summary}
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="inline-flex rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-ink/85"
+                >
+                  Email me
+                </a>
                 <a
                   href={profile.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="LinkedIn"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-white/10 text-white transition-colors hover:bg-white/20"
+                  className="inline-flex rounded-full border border-line bg-card px-5 py-3 text-sm font-medium transition-colors hover:bg-white"
                 >
-                  <LinkedInIcon />
+                  LinkedIn
                 </a>
                 <a
                   href={profile.telegram}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Telegram"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-white/10 text-white transition-colors hover:bg-white/20"
+                  className="inline-flex px-2 py-3 text-sm font-medium text-muted transition-colors hover:text-ink"
                 >
-                  <TelegramIcon />
+                  Telegram
                 </a>
               </div>
             </div>
+
+            <figure className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
+              <img
+                src={portrait}
+                alt="Daria Kurylenko"
+                className="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-[center_18%] shadow-[0_30px_70px_-36px_rgba(18,18,17,0.55)]"
+              />
+              <figcaption className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3.5 py-1.5 text-xs font-medium text-ink shadow-sm backdrop-blur">
+                Kyiv · Lead Frontend
+              </figcaption>
+            </figure>
           </div>
+        </section>
+
+        <section className="px-5 pb-4 md:px-8">
+          <dl className="mx-auto grid max-w-6xl gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {highlights.map((item) => (
+              <div key={item.label} className="bg-card px-6 py-6 md:px-8 md:py-8">
+                <dt className="text-[2rem] leading-none font-semibold tracking-[-0.04em]">
+                  {item.value}
+                </dt>
+                <dd className="mt-3 max-w-[12rem] text-sm leading-snug text-muted">
+                  {item.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <About />
@@ -240,5 +229,5 @@ export function Home() {
         <Contact />
       </main>
     </>
-  );
+  )
 }
